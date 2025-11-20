@@ -67,6 +67,27 @@ def tambahPegawai():
         return redirect(url_for('pegawai'))
     return render_template('tambah.html')
 
+@app.route('/delete/<id>')
+def delete(id):
+    cursor = mysql.connection.cursor()
+    cursor.execute('CALL deletePegawai(%s)', (id,))
+    mysql.connection.commit()
+    cursor.close()
+    return redirect(url_for('pegawai'))
+
+@app.route('/update/<id>', methods=['GET', 'POST'])
+def update(id):
+    cursor = mysql.connection.cursor(DictCursor)
+    if request.method == 'POST':
+        gaji = request.form['gaji']
+        cursor.execute('UPDATE pegawai SET gaji = %s WHERE id = %s', (gaji, id))
+        mysql.connection.commit()
+        cursor.close()
+        return redirect(url_for('detail', id=id))
+    cursor.execute('SELECT p.id, p.nama FROM pegawai p WHERE p.id = %s', (id,))
+    data = cursor.fetchone()
+    cursor.close()
+    return render_template('update.html', pegawai=data)
 
 if __name__ == '__main__':
     app.run(debug=True)
