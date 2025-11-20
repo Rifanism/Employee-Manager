@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pegawai - {{pegawai.nama}}</title>
+
+    <style>
+        .card-container{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 30px;
+        }
+        .card{
+            width: 350px;
+            background-color: white;
+            border: 1px solid #cccc;
+            border-radius: 12px;
+            box-sizing: border-box;
+            padding: 30px 20px 40px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .card-img{
+            display: block;
+            margin: 20px auto 40px auto;
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .card-body{
+            text-align: center;
+        }
+        .card-title{
+            margin-bottom: 10px;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .card-body p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        .btn{
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            color: black;
+            cursor: pointer;
+            background-color: tomato;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+        .btn:hover{
+            background-color: #ca353f;
+        }
+        .id{
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+
+        .data-card{
+            display: inline-block;
+            width: 280px;
+            border: 1px solid #cccc;
+            border-radius: 12px;
+            box-sizing: border-box;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-image: linear-gradient(to top, rgba(0, 110, 255, 0.582), rgba(1, 141, 255, 0.226));
+        }
+        p{
+            display: flex;
+            justify-content: sp;
+            margin-bottom: 8px;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card-container">
+        <div class="card">
+            <img src={{pegawai.icon}} class="card-img" alt="Foto Pegawai">
+            <div class="card-body">
+            <h4 class="card-title">{{ pegawai.nama }}</h4>
+            <h5 class="id">#{{ pegawai.id }}</h5>
+            <div class="data-card">
+                <p><strong>Jabatan: </strong> {{ pegawai.jabatan }}</p>
+                <p><strong>Divisi: </strong> {{ pegawai.nama_divisi }}</p>
+                <p><strong>Gaji: </strong> Rp {{ pegawai.gaji }}</p>
+            </div>
+            <a href="/pegawai" class="btn">Kembali</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
