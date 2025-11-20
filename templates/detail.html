@@ -46,6 +46,8 @@
             line-height: 1.5;
         }
         .btn{
+            margin-left: 100px;
+            margin-right: 100px;
             text-decoration: none;
             display: inline-block;
             margin-top: 20px;
@@ -82,6 +84,27 @@
             margin-bottom: 8px;
             padding: 0 10px;
         }
+        .buttons{
+            display: flex;
+            flex-direction:column;
+        }
+        .gaji-btn{
+            margin-left: 100px;
+            margin-right: 100px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            color: black;
+            cursor: pointer;
+            background-color: mediumseagreen;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+        .gaji-btn:hover{
+            background-color: rgb(50, 153, 97);
+        }
     </style>
 </head>
 
@@ -90,14 +113,17 @@
         <div class="card">
             <img src={{pegawai.icon}} class="card-img" alt="Foto Pegawai">
             <div class="card-body">
-            <h4 class="card-title">{{ pegawai.nama }}</h4>
-            <h5 class="id">#{{ pegawai.id }}</h5>
-            <div class="data-card">
-                <p><strong>Jabatan: </strong> {{ pegawai.jabatan }}</p>
-                <p><strong>Divisi: </strong> {{ pegawai.nama_divisi }}</p>
-                <p><strong>Gaji: </strong> Rp {{ pegawai.gaji }}</p>
-            </div>
-            <a href="/pegawai" class="btn">Kembali</a>
+                <h4 class="card-title">{{ pegawai.nama }}</h4>
+                <h5 class="id">#{{ pegawai.id }}</h5>
+                <div class="data-card">
+                    <p><strong>Jabatan: </strong> {{ pegawai.jabatan }}</p>
+                    <p><strong>Divisi: </strong> {{ pegawai.nama_divisi }}</p>
+                    <p><strong>Gaji: </strong> Rp {{ pegawai.gaji }}</p>
+                </div>
+                <div class="buttons">
+                    <a href="{{ url_for('update', id=pegawai.id) }}" class="gaji-btn">Set Gaji</a>
+                    <a href="/pegawai" class="btn">Kembali</a>
+                </div>
             </div>
         </div>
     </div>
