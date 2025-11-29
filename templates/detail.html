@@ -6,6 +6,26 @@
     <title>Pegawai - {{pegawai.nama}}</title>
 
     <style>
+        body {
+            margin: 0;
+            background: #f0f4ff;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar {
+            background-color: tomato;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
         .card-container{
             font-family: Arial, sans-serif;
             margin: 0;
@@ -27,7 +47,7 @@
         }
         .card-img{
             display: block;
-            margin: 20px auto 40px auto;
+            margin: 20px auto 10px auto;
             width: 160px;
             height: 160px;
             object-fit: cover;
@@ -50,11 +70,11 @@
             margin-right: 100px;
             text-decoration: none;
             display: inline-block;
-            margin-top: 20px;
-            color: black;
+            margin-top: 10px;
+            color: #262626;
             cursor: pointer;
             background-color: tomato;
-            padding: 6px 12px;
+            padding: 10px;
             border-radius: 5px;
             font-size: 18px;
             transition: 0.2s;
@@ -65,6 +85,7 @@
         .id{
             margin-top: 8px;
             margin-bottom: 20px;
+            color: #414141;
         }
 
         .data-card{
@@ -76,13 +97,17 @@
             padding: 20px;
             text-align: left;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background-image: linear-gradient(to top, rgba(0, 110, 255, 0.582), rgba(1, 141, 255, 0.226));
+            background-color: tomato;
         }
         p{
             display: flex;
-            justify-content: sp;
-            margin-bottom: 8px;
-            padding: 0 10px;
+            justify-content: left;
+            padding: 0px 20px;
+        }
+        hr{
+            border: none;
+            border-top: 1px solid #262626;
+            margin: 10px 0;
         }
         .buttons{
             display: flex;
@@ -94,10 +119,10 @@
             text-decoration: none;
             display: inline-block;
             margin-top: 20px;
-            color: black;
+            color: #262626;
             cursor: pointer;
             background-color: mediumseagreen;
-            padding: 6px 12px;
+            padding: 10px;
             border-radius: 5px;
             font-size: 18px;
             transition: 0.2s;
@@ -109,6 +134,11 @@
 </head>
 
 <body>
+
+    <div class="navbar">
+        <div class="navbar-title">ToMart 🍅</div>
+    </div>
+
     <div class="card-container">
         <div class="card">
             <img src={{pegawai.icon}} class="card-img" alt="Foto Pegawai">
@@ -117,8 +147,12 @@
                 <h5 class="id">#{{ pegawai.id }}</h5>
                 <div class="data-card">
                     <p><strong>Jabatan: </strong> {{ pegawai.jabatan }}</p>
+                    <hr>
                     <p><strong>Divisi: </strong> {{ pegawai.nama_divisi }}</p>
+                    <hr>
                     <p><strong>Gaji: </strong> Rp {{ pegawai.gaji }}</p>
+                    <hr>
+                    <p><strong>Total Masuk: </strong> {{ pegawai.Total }}</p>
                 </div>
                 <div class="buttons">
                     <a href="{{ url_for('update', id=pegawai.id) }}" class="gaji-btn">Set Gaji</a>
