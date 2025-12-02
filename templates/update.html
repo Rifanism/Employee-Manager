@@ -7,20 +7,35 @@
     <title>Tambah Karyawan</title>
     <style>
         body {
+            margin: 0;
+            background: #f0f4ff;
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            height: 97vh;
+            height: 70vh;
+        }
+
+        .navbar {
+            background-color: tomato;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
         }
 
         .form-container {
             max-width: 500px;
             margin: auto auto;
             padding: 50px;
-            background-color: #76b8ff;
-            background-image: linear-gradient(to top, rgba(0, 110, 255, 0.582), rgba(1, 141, 255, 0.226));
+            background-color: tomato;
             backdrop-filter: blur(30px);
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 62, 104, 0.548);
+            box-shadow: 0 0 15px rgba(104, 23, 0, 0.548);
             position: relative;
             top: 10%;
         }
@@ -39,7 +54,7 @@
         input[type="number"] {
             width: calc(100% - 50px);
             padding: 10px;
-            border: 3px solid rgb(33, 185, 255);
+            border: 3px solid rgb(255, 33, 33);
             border-radius: 10px;
         }
 
@@ -75,19 +90,23 @@
             display: inline-block;
             margin-top: 20px;
             color: #262626;
-            background-color: tomato;
             border-radius: 4px;
             padding: 10px 14px;
             font-size: 16px;
         }
         .link-kembali:hover{
-            background-color: rgb(228, 87, 63);
+            background-color: rgba(234, 234, 234, 0.559);
         }
 
     </style>
 </head>
 
 <body>
+
+    <div class="navbar">
+        <div class="navbar-title">ToMart 🍅</div>
+    </div>
+
     <div class="form-container">
         <h1>Set Gaji {{pegawai.nama}}</h1>
         <form action="" method="POST">
@@ -95,7 +114,7 @@
                 <label for="gaji">Gaji</label>
                 <input type="number" id="gaji" name="gaji" placeholder="Contoh: 3000000" required>
             </div>
-            <button type="submit" onclick="return confirm('Anda telah yakin?')">Simpan</button>
+            <button type="submit" onclick="return confirm('Anda yakin?')">Simpan</button>
         </form>
         <a href="{{ url_for('detail', id=pegawai.id) }}" class="link-kembali">Kembali</a>
     </div>
