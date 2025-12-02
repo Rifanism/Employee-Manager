@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToMart</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: tomato;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            margin-left: 20px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 70px);
+            text-align: center;
+        }
+
+        .welcome-message {
+            font-size: 32px;
+            color: tomato;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .small-text {
+            color: #6c757d;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-title">ToMart 🍅</div>
+        <div class="navbar-links">
+        <a href="/login" >Login 👤</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div>
+            <div class="welcome-message">Selamat Bekerja di ToMart!</div>
+            <p class="small-text">Silakan Login Terlebih Dahulu.</p>
+        </div>
+    </div>
+
+</body>
+</html>
