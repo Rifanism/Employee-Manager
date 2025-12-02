@@ -7,22 +7,42 @@
     <title>Tambah Karyawan</title>
     <style>
         body {
+            margin: 0;
+            background: #f0f4ff;
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            height: 97vh;
+            height: 70vh;
+        }
+
+        .navbar {
+            background-color: tomato;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
         }
 
         .form-container {
             max-width: 500px;
             margin: auto auto;
             padding: 50px;
-            background-color: #76b8ff;
-            background-image: linear-gradient(to top, rgba(0, 110, 255, 0.582), rgba(1, 141, 255, 0.226));
+            background-color: tomato;
+            background-image: linear-gradient(to top, rgba(255, 0, 0, 0.582), rgba(255, 56, 1, 0.226));
             backdrop-filter: blur(30px);
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 62, 104, 0.548);
+            box-shadow: 0 0 15px rgba(104, 0, 0, 0.548);
             position: relative;
             top: 10%;
+        }
+
+        h1{
+            color: white;
         }
 
         .form-group {
@@ -30,6 +50,7 @@
         }
 
         label {
+            color: white;
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
@@ -40,18 +61,18 @@
         input[type="number"] {
             width: calc(100% - 50px);
             padding: 10px;
-            border: 3px solid rgb(33, 185, 255);
+            border: 2px solid rgb(147, 7, 7);
             border-radius: 10px;
         }
 
         select {
             width: calc(100% - 25px);
             padding: 10px;
-            border: 3px solid rgb(33, 185, 255);
+            border: 2px solid rgb(147, 7, 7);
             border-radius: 10px;
             background-color: white;
             color: black;
-            font-size: 16px;
+            font-size: 14px;
             padding-left: 15px;
             margin-bottom: 10px;
         }
@@ -75,14 +96,25 @@
             text-decoration: none;
             display: inline-block;
             margin-top: 20px;
-            text-decoration: none;
-            color: #262626
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .link-kembali:hover{
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
     </style>
 </head>
 
 <body>
+
+    <div class="navbar">
+        <div class="navbar-title">ToMart 🍅</div>
+    </div>
+
     <div class="form-container">
         <h1>Tambah Pegawai Baru</h1>
         <form action="" method="POST">
@@ -104,6 +136,7 @@
                     <option value="Gudang & Logistik">Gudang & Logistik</option>
                     <option value="Kasir">Kasir</option>
                 </select>
+            </div>
             <div class="form-group">
                 <label for="gaji">Gaji</label>
                 <input type="number" id="gaji" name="gaji" placeholder="Contoh: 3000000" required>
@@ -115,5 +148,3 @@
 </body>
 
 </html>
-
-<!-- dari agnes -->
