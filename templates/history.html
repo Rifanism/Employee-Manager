@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimarket - Pegawai</title>
+    
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0px 300px; 
+            background-color: #ffffff; 
+        }
+
+        .container {
+            background-color: rgb(255, 255, 255);
+            height: 100vh;
+        }
+
+        .JUDUL { 
+            text-align: center; 
+            color: #111111;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+            
+            border-radius: 100px;
+            padding: 10px 0px;
+        }
+
+        table { 
+            width: max-content;
+            border-collapse: collapse;
+            margin: 20px auto;
+            margin-bottom: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #fff; 
+            table-layout: auto;
+            margin: 0;
+        }
+
+        th, td { 
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        .row-name{
+            text-align: left;
+        }
+
+
+        th { 
+            background-color: tomato;
+            color: white;
+        }
+
+        tr:nth-child(even) { 
+            background-color: #f2f2f2;
+        }
+
+        .kembali {
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            color: #000000;
+            font-size: 14px;
+            background-color: #da3c46;
+            color: white; 
+            padding: 13px 20px;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .kembali:hover{
+            background-color: #ca353f;
+        }
+
+        .kembali-button{
+            text-align: left;
+            margin-left: 132px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .kembali-button a{
+            display: block; 
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+
+        .table-container{
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 0 auto;
+            width: max-content;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .table-container thead th {
+            position: sticky;
+            top: 0;
+            background-color: #4f9bff;
+            color: white;
+            z-index: 2;
+        }
+
+    </style>
+
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="JUDUL">List Presensi Pegawai Hari Ini</h1>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Pegawai</th>
+                        <th>Nama</th>
+                        <th>Waktu</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in pegawai %}
+                    <tr>
+                        <td>{{row.ID}}</td>
+                        <td class="row-name">{{row.Nama}}</td>
+                        <td>{{row.Waktu}}</td>
+                        <td>{{row.Status}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br><br>
+        <div class="kembali-button">
+            <a href="/" class="kembali">Kembali</a>
+        </div>
+    </div>
+</body>
+</html>

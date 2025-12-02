@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToMart - Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #f0f4ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: tomato;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 350px;
+            margin: 80px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 92%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: tomato;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: rgb(224, 79, 53);
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: tomato;
+            display: block;
+            margin: 5px 0;
+            padding: 12px;
+        }
+        .links:hover{
+            background-color: rgba(255, 99, 71, 0.233);
+        }
+
+        .error-box {
+            background: #ffe1e1;
+            border-left: 5px solid #ff4a4a;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            color: #b30000;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideIn 0.4s forwards;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            text-align: center;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="navbar-title">ToMart 🍅</div>
+    </div>
+
+    <div class="container">
+        <h2>Login</h2>
+
+        {% if error %}
+            <div id="error-box" class="error-box">
+                {{ error }}
+            </div>
+
+            <script>
+                setTimeout(() => {
+                    const box = document.getElementById("error-box");
+                    if (box) {
+                        box.style.opacity = "0";
+                        box.style.transform = "translateY(-15px)";
+                    }
+                }, 3000);
+            </script>
+        {% endif %}
+
+        <form method="POST" action="/login">
+            <label>Username</label>
+            <input type="text" name="username" required>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Masuk</button>
+        </form>
+
+        <div class="links">
+            <a href="/">Kembali</a>
+        </div>
+    </div>
+
+</body>
+</html>
