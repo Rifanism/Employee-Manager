@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimarket - Pegawai</title>
+    
+    <style>
+        body {
+            margin: 0;
+            background: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: tomato;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            background-color: rgb(255, 255, 255);
+            height: 100vh;
+        }
+
+        .JUDUL { 
+            text-align: center; 
+            color: #111111;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+            
+            border-radius: 100px;
+            padding: 10px 0px;
+        }
+
+        table { 
+            width: max-content;
+            border-collapse: collapse;
+            margin: 20px auto;
+            margin-bottom: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #fff; 
+            table-layout: auto;
+            margin: 0;
+        }
+
+        th, td { 
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        .row-name{
+            text-align: left;
+        }
+
+
+        th { 
+            background-color: tomato;
+            color: white;
+        }
+
+        tr:nth-child(even) { 
+            background-color: #f2f2f2;
+        }
+
+        .kembali {
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            color: #000000;
+            font-size: 14px;
+            background-color: #da3c46;
+            color: white; 
+            padding: 13px 20px;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .kembali:hover{
+            background-color: #ca353f;
+        }
+
+        .kembali-button{
+            text-align: left;
+            margin-left: 375px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .kembali-button a{
+            display: block; 
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+
+        .table-container{
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 0 auto;
+            width: max-content;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .table-container thead th {
+            position: sticky;
+            top: 0;
+            background-color: tomato;
+            color: white;
+            z-index: 2;
+        }
+        
+        .form-group{
+            margin-left: 365px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .drop-down{
+            width: 80px;
+            height: 30px;
+            border-width: 3px;
+            border-radius: 5%;
+        }
+        
+
+    </style>
+
+    
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-title">ToMart 🍅</div>
+    </div>
+
+    <div class="container">
+        <h1 class="JUDUL">Jadwal Kerja</h1>
+        <div class="form-group">
+            <select class="drop-down" id="Hari" name="Hari">
+                <option value="Senin">Senin</option>
+                <option value="Selasa">Selasa</option>
+                <option value="Rabu">Rabu</option>
+                <option value="Kamis">Kamis</option>
+                <option value="Jumat">Jumat</option>
+                <option value="Sabtu">Sabtu</option>
+            </select>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Pegawai</th>
+                        <th>Nama</th>
+                        <th>Shift</th>
+                        <th>Jam Kerja</th>
+                        <th>Jam Selesai</th>
+                        <th>Hari</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in pegawai %}
+                    <tr>
+                        <td>{{row.id}}</td>
+                        <td class="row-name">{{row.nama}}</td>
+                        <td>{{row.kategori}}</td>
+                        <td>{{row.jam_kerja}}</td>
+                        <td>{{row.jam_selesai}}</td>
+                        <td>{{row.hari}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br><br>
+        <div class="kembali-button">
+            <a href="/back" class="kembali">Kembali</a>
+        </div>
+    </div>
+</body>
+</html>
