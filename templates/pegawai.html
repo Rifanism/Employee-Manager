@@ -6,10 +6,25 @@
     <title>Minimarket - Pegawai</title>
     
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0px 300px; 
-            background-color: #ffffff; 
+        body {
+            margin: 0;
+            background: #f0f4ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: tomato;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
         }
 
         .container {
@@ -22,7 +37,6 @@
             color: #111111;
             font-family: Arial, Helvetica, sans-serif;
             font-size: large;
-            
             border-radius: 100px;
             padding: 10px 0px;
         }
@@ -42,6 +56,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             background-color: #fff; 
             table-layout: auto;
+            margin: 0;
         }
 
         th, td { 
@@ -119,6 +134,7 @@
             display: block; 
             padding: 10px 15px;
             text-decoration: none;
+            margin-left: 299px;
         }
 
         .btn-tambah { 
@@ -142,44 +158,64 @@
             background-color: #dc3545;
             color: white; 
         }
+        .table-container{
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 0 auto;
+            width: max-content;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .table-container thead th {
+            position: sticky;
+            top: 0;
+            background-color: tomato;
+            color: white;
+            z-index: 2;
+        }
     </style>
 
     
 </head>
 <body>
+
+    <div class="navbar">
+        <div class="navbar-title">ToMart 🍅</div>
+    </div>
+
     <section class="container">
     <h1 class="JUDUL">Pegawai Minimarket</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>ID Pegawai</th>
-                <th>Nama</th>
-                <th>Divisi</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for row in pegawai %}
-            <tr>
-                <td>{{row.id}}</td>
-                <td class="row-name">{{row.nama}}</td>
-                <td>{{row.nama_divisi}}</td>
-                <td>
-                    <a href="{{ url_for('detail', id=row.id) }}" class="action-btn btn-detail">Detail 🔍</a>
-                    <a href="#" class="action-btn btn-hapus" onclick="return confirm('Yakin ingin menghapus?')">Hapus 🗑️</a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Pegawai</th>
+                    <th>Nama</th>
+                    <th>Divisi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in pegawai %}
+                <tr>
+                    <td>{{row.id}}</td>
+                    <td class="row-name">{{row.nama}}</td>
+                    <td>{{row.nama_divisi}}</td>
+                    <td>
+                        <a href="{{ url_for('detail', id=row.id) }}" class="action-btn btn-detail">Detail 🔍</a>
+                        <a href="/delete/{{row.id}}" class="action-btn btn-hapus" onclick="return confirm('Yakin ingin menghapus?')">Hapus 🗑️</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <br><br>
     <div class="kembali-button">
         <a href="/pegawai/tambah-pegawai" class="tambah">Tambah Pegawai Baru</a>
-        <a href="/" class="kembali">Kembali</a>
+        <a href="/back" class="kembali">Kembali</a>
     </div>
     </section>
 </body>
 </html>
-
-<!-- dari agnes -->
