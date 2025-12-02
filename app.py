@@ -215,20 +215,25 @@ def history():
     cursor.close()
     return render_template('history.html', pegawai=data)
 
-@app.route('/jadwal-kerja')
+@app.route('/jadwal-kerja', methods=['GET', 'POST'])
 def schedule():
+    if request.method == 'POST':
+        hari = request.form['Hari']
+    else:
+        hari = 'Senin'
     cursor = mysql.connection.cursor(DictCursor)
     query = '''
             SELECT p.id, p.nama, s.kategori, s.jam_kerja, s.jam_selesai, j.hari
             FROM jadwal_kerja j
             JOIN pegawai p ON j.id_pegawai = p.id
             JOIN shift s ON j.id_shift = s.id
+            WHERE j.hari = %s
             ORDER BY j.hari ASC, s.jam_kerja ASC
             '''
-    cursor.execute(query)
+    cursor.execute(query, (hari,))
     data = cursor.fetchall()
     cursor.close()
-    return render_template('jadwal.html', pegawai=data)
+    return render_template('jadwal.html', pegawai=data, hari=hari)
 
 @app.route('/presensi-masuk', methods=['GET', 'POST'])
 def presenceIn():
@@ -238,7 +243,10 @@ def presenceIn():
         cursor.execute('CALL masuk(%s)', (id_pegawai,))
         mysql.connection.commit()
         cursor.close()
-        return redirect(url_for('index'))
+        if session['role'] == 'admin':
+            return redirect(url_for('admin'))
+        else:
+            return redirect(url_for('user'))
     return render_template('presensi_masuk.html')
 
 @app.route('/presensi-pulang', methods = ['GET', 'POST'])
@@ -249,7 +257,10 @@ def presenceOut():
         cursor.execute('CALL keluar(%s)', (id_pegawai,))
         mysql.connection.commit()
         cursor.close()
-        return redirect(url_for('index'))
+        if session['role'] == 'admin':
+            return redirect(url_for('admin'))
+        else:
+            return redirect(url_for('user'))
     return render_template('presensi_keluar.html')
 
 if __name__ == '__main__':
