@@ -42,7 +42,6 @@
             padding: 10px 0px;
         }
 
-        /* CSS BARU: Wrapper untuk pemusatan responsif */
         .content-wrapper {
             width: max-content; 
             margin-left: auto;
@@ -200,13 +199,10 @@
         </div>
     </div>
     <script>
-        // Dijalankan ketika dokumen selesai dimuat
         document.addEventListener('DOMContentLoaded', function() {
             const selectElement = document.getElementById('Hari');
             
-            // Ketika nilai di dropdown berubah
             selectElement.addEventListener('change', function() {
-                // Otomatis kirim form
                 document.getElementById('filterForm').submit();
             });
         });
