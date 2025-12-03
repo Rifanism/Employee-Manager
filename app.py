@@ -131,7 +131,7 @@ def pegawai():
 def detail(id):
     cursor = mysql.connection.cursor(DictCursor)
     query = '''
-        SELECT p.id, p.nama, p.jabatan, FORMAT(p.gaji, 2, 'id_ID') gaji, d.nama_divisi, IFNULL(COUNT(m.id_pegawai), 0) 'Total',
+        SELECT p.id, p.nama, p.jabatan, format_gaji(p.gaji) gaji, d.nama_divisi, IFNULL(COUNT(m.id_pegawai), 0) 'Total',
         CASE p.id
             WHEN 1001 THEN 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWukf_3eIysNb3te75amKqP4IEqZgPYzThMQ&s'
             WHEN 1003 THEN 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsM9xXuI5VIsDEIH1-Z1ArXLVHHpBxGkc_fA&s'
