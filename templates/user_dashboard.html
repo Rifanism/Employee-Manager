@@ -107,6 +107,13 @@
         .sidebar.active ~ .content{ margin-left: var(--sidebar-full); }
 
         .JUDUL{ text-align:center; color:#111; font-size:1.1rem; padding:10px 0; border-radius:100px; }
+        
+        .content-wrapper {
+            width: max-content; 
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 95%; 
+        }
 
         table{
             width:max-content;
@@ -115,6 +122,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.08);
             background:#fff;
             table-layout:auto;
+            margin: 0;
         }
         th, td{
             border:1px solid #ddd;
@@ -131,6 +139,23 @@
             .content{ padding:16px; }
             .menu-item{ padding:10px; font-size:15px; }
             .menu-item .icon{ flex-basis:30px; }
+        }
+        
+        .table-container{
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .table-container thead th {
+            position: sticky;
+            top: 0;
+            background-color: tomato;
+            color: white;
+            z-index: 2;
         }
         </style>
     </head>
@@ -177,25 +202,28 @@
 
         <main class="content" id="content">
             <h1 class="JUDUL">Daftar Pegawai ToMart</h1>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID Pegawai</th>
-                        <th>Nama</th>
-                        <th>Divisi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for row in pegawai %}
-                    <tr>
-                        <td>{{row.id}}</td>
-                        <td class="row-name">{{row.nama}}</td>
-                        <td>{{row.nama_divisi}}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            <div class="content-wrapper">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Pegawai</th>
+                                <th>Nama</th>
+                                <th>Divisi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in pegawai %}
+                            <tr>
+                                <td>{{row.id}}</td>
+                                <td class="row-name">{{row.nama}}</td>
+                                <td>{{row.nama_divisi}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </main>
 
         <script>

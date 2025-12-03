@@ -107,23 +107,38 @@
         .sidebar.active ~ .content{ margin-left: var(--sidebar-full); }
 
         .JUDUL{ text-align:center; color:#111; font-size:1.1rem; padding:10px 0; border-radius:100px; }
+        
+        .content-wrapper {
+            width: max-content; 
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 95%; 
+        }
 
         table{
             width:max-content;
             border-collapse:collapse;
             margin:20px auto;
+            margin-bottom: 2px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.08);
             background:#fff;
             table-layout:auto;
+            margin: 0;
         }
         th, td{
             border:1px solid #ddd;
-            padding:12px 16px;
+            padding:12px;
             text-align:center;
         }
-        .row-name{ text-align:left; padding-left:18px; }
-        th{ background:tomato; color:#fff; }
-        tr:nth-child(even){ background:#f2f2f2; }
+        .row-name{
+            text-align:left; padding-left:18px;
+        }
+        th{
+            background:tomato; color:#fff;
+        }
+        tr:nth-child(even){
+            background:#f2f2f2;
+        }
 
         @media (max-width:640px){
             .sidebar{ width:60px; }
@@ -131,6 +146,23 @@
             .content{ padding:16px; }
             .menu-item{ padding:10px; font-size:15px; }
             .menu-item .icon{ flex-basis:30px; }
+        }
+        
+        .table-container{
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .table-container thead th {
+            position: sticky;
+            top: 0;
+            background-color: tomato;
+            color: white;
+            z-index: 2;
         }
         </style>
     </head>
@@ -183,27 +215,30 @@
 
         <main class="content" id="content">
             <h1 class="JUDUL">List Presensi Pegawai Hari Ini</h1>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID Pegawai</th>
-                        <th>Nama</th>
-                        <th>Waktu</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for row in pegawai %}
-                    <tr>
-                        <td>{{row.ID}}</td>
-                        <td class="row-name">{{row.Nama}}</td>
-                        <td>{{row.Waktu}}</td>
-                        <td>{{row.Status}}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            <div class="content-wrapper">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Pegawai</th>
+                                <th>Nama</th>
+                                <th>Waktu</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in pegawai %}
+                            <tr>
+                                <td>{{row.ID}}</td>
+                                <td class="row-name">{{row.Nama}}</td>
+                                <td>{{row.Waktu}}</td>
+                                <td>{{row.Status}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </main>
 
         <script>
