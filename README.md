@@ -7,10 +7,10 @@ Features:
 - Admin/Employee users.
 - Login with password.
 
-# Programming Language
+## Programming Language
 We are using Python with Flask for back-end, and MySQL (Laragon) for database system.
 
-# Flask Installation
+## Flask Installation
 ```bash
 pip install Flask
 pip install flask-mysqldb
